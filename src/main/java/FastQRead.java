@@ -143,7 +143,7 @@ public class FastQRead {
      * @param data a string of PHRED33 quality values
      * @return an array of decoded qualities
      */
-    private static int[] decodePhred33(String data) {
+    static int[] decodePhred33(String data) {
         return null;
     }
 }
