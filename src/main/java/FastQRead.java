@@ -82,6 +82,9 @@ public class FastQRead {
             char[] bases = null;
             int[] qualities = null;
 
+            // a phred decoder helps decoding the quality values
+            PhredCode decoder = new PhredCode(33);
+
             // we need to keep track of how many lines we've read so far
             int i = 0;
             // we need to check if the file has more lines
@@ -112,7 +115,7 @@ public class FastQRead {
                         break;
                     case 3:
                         // is qualities
-                        qualities = decodePhred33(data);
+                        qualities = decoder.decodeMany(data);
                         break;
                     default:
                         // is `+` -> can be skipped
@@ -135,15 +138,5 @@ public class FastQRead {
         int recordSize = records.size();
         FastQRead[] recordArray = new FastQRead[recordSize];
         return records.toArray(recordArray);
-    }
-
-    /**
-     * Decode a string of PHRED33 encoded quality values.
-     *
-     * @param data a string of PHRED33 quality values
-     * @return an array of decoded qualities
-     */
-    static int[] decodePhred33(String data) {
-        return null;
     }
 }
