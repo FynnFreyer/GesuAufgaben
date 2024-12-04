@@ -22,7 +22,6 @@ public class FastQRead {
         System.out.println(Arrays.toString(records));
     }
 
-
     /**
      * Read identifier.
      */
@@ -114,8 +113,7 @@ public class FastQRead {
                         break;
                     case 3:
                         // is qualities
-                        int[] q = {1, 2, 3};
-                        qualities = q;
+                        qualities = decodePhred33(data);
                         break;
                     default:
                         break;
@@ -137,5 +135,15 @@ public class FastQRead {
         int recordSize = records.size();
         FastQRead[] recordArray = new FastQRead[recordSize];
         return records.toArray(recordArray);
+    }
+
+    /**
+     * Decode a string of PHRED33 encoded quality values.
+     *
+     * @param data a string of PHRED33 quality values
+     * @return an array of decoded qualities
+     */
+    private static int[] decodePhred33(String data) {
+        return null;
     }
 }
