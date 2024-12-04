@@ -16,8 +16,7 @@ public class FastQRead {
      * @param args an array of CLI arguments, ignore it for now...
      */
     public static void main(String[] args) {
-        // change me to your file path ...
-        String filename = "/path/to/sample.fastq";
+        String filename = "assets/sample.fastq";
         FastQRead[] records = readFastQ(filename);
         System.out.println(Arrays.toString(records));
     }
@@ -116,6 +115,7 @@ public class FastQRead {
                         qualities = decodePhred33(data);
                         break;
                     default:
+                        // is `+` -> can be skipped
                         break;
                 }
                 i++;
